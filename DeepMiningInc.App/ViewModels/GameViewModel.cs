@@ -1,34 +1,30 @@
-﻿using DeepMiningInc.Models;
-using Microsoft.Graphics.Canvas;
-using Microsoft.Graphics.Canvas.UI;
-using Microsoft.Graphics.Canvas.UI.Xaml;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Numerics;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.Devices.Input;
+using DeepMiningInc.Models;
+using DeepMiningInc.Rendering.Numerics;
+using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.UI;
+
+using Microsoft.Graphics.Canvas.UI.Xaml;
 using Template10.Mvvm;
 using Windows.Foundation;
-using Windows.UI;
-using Windows.UI.Input;
+using Windows.System;
+using Windows.UI.Xaml;
+
 using Windows.UI.Xaml.Input;
 
 namespace DeepMiningInc.App.ViewModels
 {
-    using Windows.System;
-
-    using DeepMiningInc.Rendering.Numerics;
-
-    using Microsoft.Graphics.Canvas.Effects;
 
     public class GameViewModel : ViewModelBase
     {
         private const float TILE_HEIGHT = 64;
         private const float TILE_WIDTH = 128;
         private CanvasBitmap _test;
+        private CanvasBitmap _testBlock;
         private Vector2 _lastMousePos;
 
         private Vector2 _lastMouseScrollPos;
@@ -72,14 +68,18 @@ namespace DeepMiningInc.App.ViewModels
             {
                 for (var y = 0; y < 10; y++)
                 {
-                    var position = _coordinateSystem.TileCoordinatesToScreenCoordinates(new TileCoordinate(x, y));
                     ICanvasImage image = _test;
+                    var thisTileHeight = (float)image.GetBounds(args.DrawingSession).Height / _coordinateSystem.TileHeight;
                     if (x == mouseTile.X && y == mouseTile.Y && _lastMousePos != Vector2.Zero)
                     {
-                        var effect = new InvertEffect { Source = image };
-                        image = effect;
+                        //var effect = new InvertEffect { Source = image };
+                        image = _testBlock;
+                        thisTileHeight = 1.5f;
                     }
-                    args.DrawingSession.DrawImage(image, new Rect(position.X, position.Y, TILE_WIDTH, TILE_HEIGHT), new Rect(0, 0, TILE_WIDTH, TILE_HEIGHT));
+                    var position = _coordinateSystem.TileCoordinatesToScreenCoordinates(new TileCoordinate(x, y), thisTileHeight);
+                    args.DrawingSession.DrawImage(
+                        image,
+                        new Rect(position.X, position.Y, _coordinateSystem.EffectiveTileWidth, _coordinateSystem.EffectiveTileHeight * thisTileHeight), new Rect(0, 0, TILE_WIDTH, TILE_HEIGHT * thisTileHeight));
                 }
             }
         }
@@ -102,10 +102,18 @@ namespace DeepMiningInc.App.ViewModels
             }
         }
 
+        public void AnimatedCanvas_PointerWheelChanged(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            var point = e.GetCurrentPoint(sender as UIElement);
+            _coordinateSystem.ZoomLevel += point.Properties.MouseWheelDelta / 1000.0f;
+        }
+
         private async Task LoadResourcesAsync(ICanvasAnimatedControl canvasControl)
         {
             var testResource = await CanvasBitmap.LoadAsync(canvasControl, "Resources/Textures/default.png");
             _test = testResource;
+            testResource = await CanvasBitmap.LoadAsync(canvasControl, "Resources/Textures/default_block.png");
+            _testBlock = testResource;
         }
     }
 }

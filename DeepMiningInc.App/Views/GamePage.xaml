@@ -13,6 +13,7 @@
                                     CreateResources="{x:Bind ViewModel.CreateResources}"
                                     Draw="{x:Bind ViewModel.Render}"
                                     Paused="False"
-                                    PointerMoved="{x:Bind ViewModel.CanvasControl_PointerMoved}" />
+                                    PointerMoved="{x:Bind ViewModel.CanvasControl_PointerMoved}"
+                                    PointerWheelChanged="{x:Bind ViewModel.AnimatedCanvas_PointerWheelChanged}" />
     </Grid>
 </Page>

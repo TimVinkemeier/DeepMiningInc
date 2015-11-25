@@ -1,37 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
 
 namespace DeepMiningInc.Rendering.Numerics
 {
-    using System.Numerics;
 
     /// <summary>
     /// Represents an isometric coordinate system.
     /// </summary>
     public class IsometricCoordinateSystem : CoordinateSystem
     {
-        private readonly float halfTileWidth;
-        private readonly float halfTileHeight;
+        public override float MaximumZoomLevel { get; }
 
-        public IsometricCoordinateSystem(uint tileWidth, uint tileHeight, TileCoordinate originalTopLeftTileCoordinate)
+        public override float MinimumZoomLevel { get; }
+
+        public IsometricCoordinateSystem(uint tileWidth, uint tileHeight, TileCoordinate originalTopLeftTileCoordinate, float minimumZoomLevel = 0.15f, float maximumZoomLevel = 5.0f)
             : base(tileWidth, tileHeight, originalTopLeftTileCoordinate)
         {
-            halfTileWidth = (float)tileWidth / 2;
-            halfTileHeight = (float)tileHeight / 2;
+            MinimumZoomLevel = minimumZoomLevel;
+            MaximumZoomLevel = maximumZoomLevel;
+            ZoomLevel = 1.0f;
         }
 
-        public override Vector2 TileCoordinatesToScreenCoordinates(TileCoordinate tileCoordinates)
+        public override Vector2 TileCoordinatesToScreenCoordinates(TileCoordinate tileCoordinates, float thisTileHeight)
         {
+            var halfTileWidth = EffectiveTileWidth / 2;
+            var halfTileHeight = EffectiveTileHeight / 2;
             var screenX = (tileCoordinates.X - tileCoordinates.Y) * halfTileWidth;
             var screenY = (tileCoordinates.X + tileCoordinates.Y) * halfTileHeight;
-            return new Vector2(screenX + ViewCenterOffset.X, screenY + ViewCenterOffset.Y);
+            return new Vector2(screenX + ViewCenterOffset.X, screenY + ViewCenterOffset.Y - (thisTileHeight - 1.0f) * EffectiveTileHeight);
         }
 
         public override TileCoordinate ScreenCoordinatesToTileCoordinates(Vector2 screenCoordinates)
         {
+            var halfTileWidth = EffectiveTileWidth / 2;
+            var halfTileHeight = EffectiveTileHeight / 2;
+
             var effectiveCoordinate = screenCoordinates - ViewCenterOffset;
             effectiveCoordinate -= new Vector2(halfTileWidth, 0);
             effectiveCoordinate = new Vector2(effectiveCoordinate.X / halfTileWidth, effectiveCoordinate.Y / halfTileHeight);

@@ -125,6 +125,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Resources\Textures\black_stone.jpg" />
     <Content Include="Resources\Textures\default.png" />
+    <Content Include="Resources\Textures\default_block.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
