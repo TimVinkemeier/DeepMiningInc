@@ -16,6 +16,7 @@ namespace DeepMiningInc.App.Views
             InitializeComponent();
             ViewModel = new GameViewModel();
             DataContext = ViewModel;
+            Engine.Engine.Current.Attach(AnimatedCanvas);
         }
     }
 }

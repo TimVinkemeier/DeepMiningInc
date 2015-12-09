@@ -1,6 +1,9 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Rx-Main": "2.2.5",
+    "StyleCop.Analyzers": "1.0.0-beta017",
+    "Win2D.uwp": "1.10.0"
   },
   "frameworks": {
     "uap10.0": {}

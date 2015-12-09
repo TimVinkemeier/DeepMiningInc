@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace DeepMiningInc.Models.Level
+namespace DeepMiningInc.Engine.Level
 {
-    public class Map
+    public sealed class Map
     {
+        public SortedList<int, MapLayer> Layers { get; }
+
+        public Map()
+        {
+            Layers = new SortedList<int, MapLayer>();
+        }
     }
 }

@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DeepMiningInc.Engine.Rendering.Texture;
 
-namespace DeepMiningInc.Models.Level
+namespace DeepMiningInc.Engine.Level
 {
-    public abstract class MapTile
-    {
 
+    public sealed class MapTile
+    {
+        public static readonly MapTile Default = new MapTile(string.Empty);
+
+        public string TextureKey { get; set; }
+
+        public MapTile(string textureKey)
+        {
+            TextureKey = textureKey;
+        }
     }
 }

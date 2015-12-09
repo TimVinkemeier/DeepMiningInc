@@ -126,6 +126,9 @@
     <Content Include="Resources\Textures\black_stone.jpg" />
     <Content Include="Resources\Textures\default.png" />
     <Content Include="Resources\Textures\default_block.png" />
+    <Content Include="Resources\Textures\stone.png" />
+    <Content Include="Resources\Textures\testgray.png" />
+    <Content Include="Resources\Textures\testgreen.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -147,13 +150,9 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DeepMiningInc.Models\DeepMiningInc.Models.csproj">
+    <ProjectReference Include="..\DeepMiningInc.Models\DeepMiningInc.Engine.csproj">
       <Project>{604947E6-F3E1-4AA4-BE8B-528427651064}</Project>
-      <Name>DeepMiningInc.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DeepMiningInc.Rendering\DeepMiningInc.Rendering.csproj">
-      <Project>{583748fb-36a9-41a4-9832-7de0204813c2}</Project>
-      <Name>DeepMiningInc.Rendering</Name>
+      <Name>DeepMiningInc.Engine</Name>
     </ProjectReference>
     <ProjectReference Include="..\DeepMiningInc.Sdk\DeepMiningInc.Sdk.csproj">
       <Project>{053D78E5-3102-454C-B6F2-A61283B449D9}</Project>

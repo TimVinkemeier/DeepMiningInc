@@ -7,8 +7,8 @@
     <ProjectGuid>{604947E6-F3E1-4AA4-BE8B-528427651064}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeepMiningInc.Models</RootNamespace>
-    <AssemblyName>DeepMiningInc.Models</AssemblyName>
+    <RootNamespace>DeepMiningInc.Engine</RootNamespace>
+    <AssemblyName>DeepMiningInc.Engine</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>DeepMiningInc.Engine.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +36,7 @@
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>DeepMiningInc.Engine.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <PlatformTarget>ARM</PlatformTarget>
@@ -46,6 +48,7 @@
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>DeepMiningInc.Engine.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <PlatformTarget>ARM</PlatformTarget>
@@ -57,6 +60,7 @@
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>DeepMiningInc.Engine.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <PlatformTarget>x64</PlatformTarget>
@@ -68,6 +72,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>DeepMiningInc.Engine.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <PlatformTarget>x64</PlatformTarget>
@@ -79,6 +84,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>DeepMiningInc.Engine.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -90,6 +96,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>DeepMiningInc.Engine.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -101,16 +108,37 @@
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>DeepMiningInc.Engine.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="DeepMiningInc.Engine.ruleset" />
     <None Include="project.json" />
+    <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DebugDataGenerator.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="ITexture.cs" />
+    <Compile Include="ITextureManager.cs" />
+    <Compile Include="Level\Level.cs" />
+    <Compile Include="Level\MapLayer.cs" />
+    <Compile Include="ReactiveBehavior.cs" />
+    <Compile Include="Rendering\IRenderer.cs" />
     <Compile Include="Level\Map.cs" />
     <Compile Include="Level\MapTile.cs" />
+    <Compile Include="Numerics\CoordinateSystem.cs" />
+    <Compile Include="Numerics\IsometricCoordinateSystem.cs" />
+    <Compile Include="Numerics\TileCoordinate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\MapTileRenderer.cs" />
+    <Compile Include="BitmapTexture.cs" />
+    <Compile Include="Rendering\Texture\Texture.cs" />
+    <Compile Include="ResourceLoadingHandler.cs" />
+    <Compile Include="TextureManager.cs" />
+    <Compile Include="TileSet.cs" />
     <Content Include="Properties\SkiManager.Models.rd.xml" />
   </ItemGroup>
   <ItemGroup>

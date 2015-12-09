@@ -30,8 +30,7 @@ namespace Sample
         private Task ConfigureContainerAsync()
         {
             var builder = new ContainerBuilder();
-
-            builder.RegisterType(typeof(RenderingManager)).As<IRenderingManager>();
+            
 
             Container = builder.Build();
             ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(Container));

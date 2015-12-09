@@ -5,9 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepMiningInc.App", "DeepMiningInc.App\DeepMiningInc.App.csproj", "{98D71AA8-443D-44C9-90CF-7CB67FD1C650}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepMiningInc.Models", "DeepMiningInc.Models\DeepMiningInc.Models.csproj", "{604947E6-F3E1-4AA4-BE8B-528427651064}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepMiningInc.Rendering", "DeepMiningInc.Rendering\DeepMiningInc.Rendering.csproj", "{583748FB-36A9-41A4-9832-7DE0204813C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepMiningInc.Engine", "DeepMiningInc.Models\DeepMiningInc.Engine.csproj", "{604947E6-F3E1-4AA4-BE8B-528427651064}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepMiningInc.Sdk", "DeepMiningInc.Sdk\DeepMiningInc.Sdk.csproj", "{053D78E5-3102-454C-B6F2-A61283B449D9}"
 EndProject
@@ -63,22 +61,6 @@ Global
 		{604947E6-F3E1-4AA4-BE8B-528427651064}.Release|x64.Build.0 = Release|x64
 		{604947E6-F3E1-4AA4-BE8B-528427651064}.Release|x86.ActiveCfg = Release|x86
 		{604947E6-F3E1-4AA4-BE8B-528427651064}.Release|x86.Build.0 = Release|x86
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Debug|ARM.ActiveCfg = Debug|ARM
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Debug|ARM.Build.0 = Debug|ARM
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Debug|x64.ActiveCfg = Debug|x64
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Debug|x64.Build.0 = Debug|x64
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Debug|x86.ActiveCfg = Debug|x86
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Debug|x86.Build.0 = Debug|x86
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Release|ARM.ActiveCfg = Release|ARM
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Release|ARM.Build.0 = Release|ARM
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Release|x64.ActiveCfg = Release|x64
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Release|x64.Build.0 = Release|x64
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Release|x86.ActiveCfg = Release|x86
-		{583748FB-36A9-41A4-9832-7DE0204813C2}.Release|x86.Build.0 = Release|x86
 		{053D78E5-3102-454C-B6F2-A61283B449D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{053D78E5-3102-454C-B6F2-A61283B449D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{053D78E5-3102-454C-B6F2-A61283B449D9}.Debug|ARM.ActiveCfg = Debug|ARM
