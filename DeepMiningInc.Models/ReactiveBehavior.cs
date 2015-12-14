@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Reactive.Linq;
 
+using DeepMiningInc.Engine.Events;
+
 namespace DeepMiningInc.Engine
 {
     public abstract class ReactiveBehavior
     {
-        protected IObservable<EarlyUpdateEventArgs> EarlyUpdate { get; }
+        protected IObservable<EarlyUpdateEngineEventArgs> EarlyUpdate { get; }
 
-        protected IObservable<UpdateEventArgs> Update { get; }
+        protected IObservable<UpdateEngineEventArgs> Update { get; }
 
         private bool _isEnabled = true;
         public bool IsEnabled
@@ -26,8 +28,8 @@ namespace DeepMiningInc.Engine
 
         protected ReactiveBehavior()
         {
-            EarlyUpdate = Engine.Current.EarlyUpdateObservable.DoWhile(() => IsEnabled);
-            Update = Engine.Current.UpdateObservable.DoWhile(() => IsEnabled);
+            EarlyUpdate = Engine.Current.EarlyUpdateSubject.DoWhile(() => IsEnabled);
+            Update = Engine.Current.UpdateSubject.DoWhile(() => IsEnabled);
         }
     }
 }

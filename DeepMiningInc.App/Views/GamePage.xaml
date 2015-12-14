@@ -7,6 +7,6 @@
       mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <xaml:CanvasAnimatedControl x:Name="AnimatedCanvas" Paused="False" />
+        <xaml:CanvasAnimatedControl x:Name="AnimatedCanvas" Paused="True" />
     </Grid>
 </Page>

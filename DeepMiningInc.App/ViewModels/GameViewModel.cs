@@ -2,13 +2,13 @@
 using System.Numerics;
 using System.Threading.Tasks;
 
+using Windows.UI;
+
 using DeepMiningInc.Engine;
 
 using Microsoft.Graphics.Canvas;
 
 using Template10.Mvvm;
-
-using DeepMiningInc.Engine.Rendering.Texture;
 
 namespace DeepMiningInc.App.ViewModels
 {
@@ -17,18 +17,40 @@ namespace DeepMiningInc.App.ViewModels
     {
         public GameViewModel()
         {
+            ConfigureEngine();
             Engine.Engine.Current.TextureManager.RegisterForResourceLoading(LoadResourcesAsync);
         }
 
-        private async Task LoadResourcesAsync(ITextureManager texturemanager, ICanvasResourceCreator resourcecreator, ResourceLoadingArgs args)
+        private static void ConfigureEngine()
+        {
+            Engine.Engine.Current.Configure()
+                .WithRendering("stone")
+                .WithZoomOnScrollWheel()
+                .WithPanOnKeyAndMouseMove();
+
+            Engine.Engine.Current.ClearColor = Colors.Black;
+        }
+
+        private static async Task LoadResourcesAsync(ITextureRegistrar textureRegistrar, ICanvasResourceCreator resourcecreator, ResourceLoadingArgs args)
         {
             Engine.Engine.Current.CoordinateSystem.ViewCenterOffset = new Vector2((float)args.CanvasSize.Width * 0.5f, (float)args.CanvasSize.Height * 0.5f);
 
-            var tileSet = await TileSet.FromBitmapUriAsync(resourcecreator, new Uri("ms-appx:///Resources/Textures/stone.png"), 512, 256);
-            texturemanager.RegisterTexture("stone", tileSet.GetTextureFromAbsoluteCoordinates(0, 0));
+            var bitmap = await
+                CanvasBitmap.LoadAsync(
+                    resourcecreator,
+                    new Uri("ms-appx:///Resources/Textures/stone.png", UriKind.Absolute));
 
-            var defaultTexture = await BitmapTexture.FromUriAsync(resourcecreator, new Uri("ms-appx:///Resources/Textures/default.png"));
-            texturemanager.RegisterTexture("default", defaultTexture);
+            await textureRegistrar.RegisterSpriteSheetAsync("stone", SpriteSheet.FromSingleSpriteBitmap(bitmap));
+
+            bitmap = await
+                CanvasBitmap.LoadAsync(
+                    resourcecreator,
+                    new Uri("ms-appx:///Resources/Textures/default.png", UriKind.Absolute));
+
+            await textureRegistrar.RegisterSpriteSheetAsync("default", SpriteSheet.FromSingleSpriteBitmap(bitmap));
+
+            //await textureRegistrar.RegisterSingleTextureAsync(resourcecreator, "stone", new Uri("ms-appx:///Resources/Textures/stone.png", UriKind.Absolute));
+            //await textureRegistrar.RegisterSingleTextureAsync(resourcecreator, "default", new Uri("ms-appx:///Resources/Textures/default.png", UriKind.Absolute));
         }
     }
 }

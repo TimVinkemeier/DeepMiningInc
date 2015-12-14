@@ -1,4 +1,6 @@
-﻿using DeepMiningInc.App.ViewModels;
+﻿using Windows.UI.ViewManagement;
+
+using DeepMiningInc.App.ViewModels;
 
 using Windows.UI.Xaml.Controls;
 
@@ -17,6 +19,7 @@ namespace DeepMiningInc.App.Views
             ViewModel = new GameViewModel();
             DataContext = ViewModel;
             Engine.Engine.Current.Attach(AnimatedCanvas);
+            Engine.Engine.Current.StartOrResume();
         }
     }
 }
