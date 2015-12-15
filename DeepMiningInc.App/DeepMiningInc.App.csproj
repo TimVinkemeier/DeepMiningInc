@@ -125,10 +125,16 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Resources\Textures\black_stone.jpg" />
     <Content Include="Resources\Textures\default.png" />
+    <Content Include="Resources\Textures\default2d.png" />
     <Content Include="Resources\Textures\default_block.png" />
+    <Content Include="Resources\Textures\ground.png" />
     <Content Include="Resources\Textures\stone.png" />
+    <Content Include="Resources\Textures\stone2d.png" />
     <Content Include="Resources\Textures\testgray.png" />
     <Content Include="Resources\Textures\testgreen.png" />
+    <Content Include="Resources\Textures\wall_ne.png" />
+    <Content Include="Resources\Textures\wall_nw.png" />
+    <Content Include="Resources\Textures\wall_we.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

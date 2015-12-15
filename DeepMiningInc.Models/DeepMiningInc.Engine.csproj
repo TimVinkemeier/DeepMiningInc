@@ -134,6 +134,7 @@
     <Compile Include="ITextureRegistrar.cs" />
     <Compile Include="Level\Level.cs" />
     <Compile Include="Level\MapLayer.cs" />
+    <Compile Include="Numerics\OrthographicCoordinateSystem.cs" />
     <Compile Include="PanMapEngineFeature.cs" />
     <Compile Include="ReactiveBehavior.cs" />
     <Compile Include="RenderEngineFeature.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="TextureManager.cs" />
     <Compile Include="SpriteSheet.cs" />
     <Compile Include="Events\UpdateEngineEventArgs.cs" />
+    <Compile Include="TrackFocusedMapTileFeature.cs" />
     <Compile Include="ZoomMapEngineFeature.cs" />
     <Content Include="Properties\SkiManager.Models.rd.xml" />
   </ItemGroup>

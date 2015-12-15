@@ -43,12 +43,14 @@ namespace DeepMiningInc.Engine
         public bool IsInitialized { get; private set; }
 
         private Color _clearColor;
+
         public Color ClearColor
         {
             get
             {
                 return _clearColor;
             }
+
             set
             {
                 _clearColor = value;
@@ -77,7 +79,6 @@ namespace DeepMiningInc.Engine
 
             // TODO remove debug code
             Game = DebugDataGenerator.CreateGame();
-            CoordinateSystem = new IsometricCoordinateSystem(128, 64, new TileCoordinate(0));
 
             EarlyUpdateSubject = new Subject<EarlyUpdateEngineEventArgs>();
             UpdateSubject = new Subject<UpdateEngineEventArgs>();

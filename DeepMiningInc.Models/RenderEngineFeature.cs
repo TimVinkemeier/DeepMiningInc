@@ -7,6 +7,7 @@ using DeepMiningInc.Engine.Numerics;
 using Windows.Foundation;
 
 using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.Effects;
 
 namespace DeepMiningInc.Engine
 {
@@ -30,6 +31,7 @@ namespace DeepMiningInc.Engine
         {
             using (var spriteBatch = args.EventArgs.DrawingSession.CreateSpriteBatch())
             {
+                var mouseTile = TrackFocusedMapTileFeature.GetFocusedMapTile(args.Engine);
 
                 if (!string.IsNullOrEmpty(ClearTextureKey))
                 {
@@ -39,21 +41,20 @@ namespace DeepMiningInc.Engine
                 var cs = args.Engine.CoordinateSystem;
                 foreach (var tile in args.Engine.Game.ActiveLevel.Map.Layers[0])
                 {
-                    var image = args.Engine.TextureManager.GetTextureFromPath(tile.Value.TextureKey);
-                    var thisTileHeight = (float)image.SourceRect.Height;
+                    var texture = args.Engine.TextureManager.GetTextureFromPath(tile.Value.TextureKey);
+                    var thisTileHeight = (float)texture.SourceRect.Height;
                     var thisTileHeightFactor = thisTileHeight / cs.TileHeight;
 
-                    var position = cs.TileCoordinatesToScreenCoordinates(
-                        tile.Key,
-                        thisTileHeightFactor);
-                    spriteBatch.DrawFromSpriteSheet(
-                        image.Bitmap,
-                        new Rect(
-                            position.X,
-                            position.Y,
-                            cs.EffectiveTileWidth,
-                            cs.EffectiveTileHeight * thisTileHeightFactor),
-                        image.SourceRect);
+                    var position = cs.TileCoordinatesToScreenCoordinates(tile.Key, thisTileHeightFactor);
+
+                    var tint = Vector4.One;
+
+                    if (tile.Value == mouseTile)
+                    {
+                        tint = new Vector4(1, 3, 1, 1);
+                    }
+
+                    spriteBatch.DrawFromSpriteSheet(texture.Bitmap, new Rect(position.X, position.Y, cs.EffectiveTileWidth, cs.EffectiveTileHeight * thisTileHeightFactor), texture.SourceRect, tint);
                 }
             }
         }

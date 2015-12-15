@@ -51,12 +51,11 @@ namespace DeepMiningInc.Engine
 
         internal static IEnumerable<KeyValuePair<TileCoordinate, MapTile>> CreateTiles()
         {
-            var SIZE = 15;
-            for (var x = 0; x < SIZE; x++)
+            for (var x = 0; x < map.GetLength(1); x++)
             {
-                for (var y = 0; y < SIZE; y++)
+                for (var y = 0; y < map.GetLength(0); y++)
                 {
-                    yield return new KeyValuePair<TileCoordinate, MapTile>(new TileCoordinate(x, y), new MapTile("default"));
+                    yield return new KeyValuePair<TileCoordinate, MapTile>(new TileCoordinate(x, y), new MapTile(map[y, x]));
                 }
             }
         }
@@ -65,5 +64,24 @@ namespace DeepMiningInc.Engine
         {
             return Enumerable.Empty<Entity>();
         }
+
+        private static string[,] map =
+            {
+                { "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "wall_ne", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_we", "wall_nw", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" },
+                { "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground", "ground" }
+            };
     }
 }

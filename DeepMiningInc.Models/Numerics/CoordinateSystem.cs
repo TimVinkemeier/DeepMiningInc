@@ -47,7 +47,7 @@
             return this.TileCoordinatesToScreenCoordinates(tileCoordinates, 0.0f);
         }
 
-        public abstract Vector2 TileCoordinatesToScreenCoordinates(TileCoordinate tileCoordinates, float tileHeight);
+        public abstract Vector2 TileCoordinatesToScreenCoordinates(TileCoordinate tileCoordinates, float thisTileHeightFactor);
 
         public abstract TileCoordinate ScreenCoordinatesToTileCoordinates(Vector2 screenCoordinates);
     }
